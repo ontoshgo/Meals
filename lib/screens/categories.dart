@@ -7,11 +7,9 @@ import '../models/category.dart';
 import '../models/meal.dart';
 
 class CategoriesScreen extends StatelessWidget {
-  const CategoriesScreen(
-      {super.key, required this.toggleMealFavorite, required this.meals});
+  const CategoriesScreen({super.key, required this.meals});
 
   final List<Meal> meals;
-  final Function(Meal meal) toggleMealFavorite;
 
   void _selectCategory(BuildContext context, Category category) {
     final route = MaterialPageRoute(
@@ -20,7 +18,6 @@ class CategoriesScreen extends StatelessWidget {
         meals: meals
             .where((element) => element.categories.contains(category.id))
             .toList(),
-        toggleMealFavorite: toggleMealFavorite,
       ),
     );
     Navigator.push(context, route);
